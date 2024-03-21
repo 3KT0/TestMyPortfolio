@@ -16,7 +16,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0xFF6347,});
+const material = new THREE.MeshNormalMaterial({ color: 0xFF6347});
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -27,7 +27,7 @@ pointLight.position.set(5, 5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 const light = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.5);
 
-scene.add(light, pointLight, ambientLight);
+scene.add(pointLight, ambientLight, light);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
 const gridHelper = new THREE.GridHelper(200, 50);
@@ -61,11 +61,15 @@ const cube = new THREE.Mesh(
 
 scene.add(cube);
 
-const sphereTexture = new THREE.TextureLoader().load('07.jpg');
+const sphereTexture = new THREE.TextureLoader().load('gold.jpg');
+const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32),
-    new THREE.MeshBasicMaterial({ map: sphereTexture })
+    new THREE.MeshPhongMaterial({ 
+        map: sphereTexture, 
+        normalmap: sphereTexture,
+    })
 );
 
 scene.add(sphere);
