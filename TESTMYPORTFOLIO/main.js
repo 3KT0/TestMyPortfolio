@@ -78,6 +78,23 @@ sphere.position.z = 30;
 sphere.position.setX(-10);
 
 
+function moveCamera(){
+    const t = document.body.getBoundingClientRect().top;
+    sphere.rotation.x += 0.05;
+    sphere.rotation.y += 0.075;
+    sphere.rotation.z += 0.05;
+
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+
+    camera.position.z = t * -0.01;
+    camera.position.x = t * -0.0002;
+    camera.rotation.y = t * -0.0002;
+
+}
+
+document.body.onscroll = moveCamera
+
 function animate(){
     requestAnimationFrame(animate);
     torus.rotation.x += 0.001;
