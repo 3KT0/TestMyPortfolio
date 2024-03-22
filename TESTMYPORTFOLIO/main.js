@@ -74,6 +74,9 @@ const sphere = new THREE.Mesh(
 
 scene.add(sphere);
 
+sphere.position.z = 30;
+sphere.position.setX(-10);
+
 
 function animate(){
     requestAnimationFrame(animate);
