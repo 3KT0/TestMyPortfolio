@@ -16,7 +16,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshNormalMaterial({ color: 0xFF6347});
+const material = new THREE.MeshStandardMaterial({ color: 0xFF6347 });
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -66,7 +66,7 @@ const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
 const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(3, 32, 32),
-    new THREE.MeshPhongMaterial({ 
+    new THREE.MeshBasicMaterial({ 
         map: sphereTexture, 
         normalmap: sphereTexture,
     })
